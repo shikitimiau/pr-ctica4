@@ -8,7 +8,14 @@ function make_me_a_controller(array $args):void{
 	//lets receive a name for the controller file
 
 	if(isset($args[1])){
-		echo $args[1];
+		$file = fopen("./$args[1].php","w");
+		if($file){
+			fwrite($file,$args[1]);
+			fclose($file);
+			echo "file created";
+		}
+		else
+			echo "Opening file failed.";
 	}else
 		echo "Dude I need a name for the file";
 }
